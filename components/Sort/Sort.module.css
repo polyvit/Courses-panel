@@ -1,0 +1,13 @@
+.sort {
+  display: flex;
+  gap: 20px;
+}
+
+.icon {
+  display: none;
+}
+
+.active .icon {
+  display: inline-block;
+  margin-right: 8px;
+}

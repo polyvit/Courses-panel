@@ -4,13 +4,26 @@ import styles from "./CourseComponent.module.css";
 import { Card } from "../../components";
 import { TopLevelCategory } from "../../types/page.types";
 import { SortEnum } from "../../components/Sort/Sort.types";
+import { useReducer } from "react";
+import { sortReducer } from "./sort.reducer";
 
 export const CourseComponent = ({
   page,
   products,
   firstCategory,
 }: CourseComponentProps): JSX.Element => {
-  console.log(page.advantages);
+  const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(
+    sortReducer,
+    {
+      products,
+      sort: SortEnum.Rating,
+    }
+  );
+
+  const setSort = (sort: SortEnum) => {
+    dispatchSort({ type: sort });
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>
@@ -20,10 +33,11 @@ export const CourseComponent = ({
             {products.length}
           </Tag>
         )}
-        <Sort sort={SortEnum.Rating} setSort={() => {}} />
+        <Sort sort={sort} setSort={setSort} />
       </div>
       <div>
-        {products && products.map((p) => <div key={p._id}>{p.title}</div>)}
+        {sortedProducts &&
+          sortedProducts.map((p) => <div key={p._id}>{p.title}</div>)}
       </div>
       <div className={styles.hhTitle}>
         <HTag tag="h2">Вакансии - {page.category}</HTag>
