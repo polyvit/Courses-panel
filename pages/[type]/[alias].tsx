@@ -6,9 +6,16 @@ import { TopLevelCategory, TopPageModel } from "../../types/page.types";
 import { ParsedUrlQuery } from "querystring";
 import { ProductModel } from "../../types/product.types";
 import { firstLevelMenu } from "../../helpers/helpers";
+import { CourseComponent } from "../../page-components";
 
-function Course({ menu, page, products }: CourseProps): JSX.Element {
-  return <></>;
+function Course({ firstCategory, page, products }: CourseProps): JSX.Element {
+  return (
+    <CourseComponent
+      firstCategory={firstCategory}
+      page={page}
+      products={products}
+    />
+  );
 }
 
 export default withLayout(Course);
