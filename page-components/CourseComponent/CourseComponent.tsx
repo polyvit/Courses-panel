@@ -1,4 +1,12 @@
-import { Advantage, HTag, HhData, PTag, Sort, Tag } from "../../components";
+import {
+  Advantage,
+  HTag,
+  HhData,
+  PTag,
+  Product,
+  Sort,
+  Tag,
+} from "../../components";
 import { CourseComponentProps } from "./CourseComponent.types";
 import styles from "./CourseComponent.module.css";
 import { Card } from "../../components";
@@ -37,7 +45,7 @@ export const CourseComponent = ({
       </div>
       <div>
         {sortedProducts &&
-          sortedProducts.map((p) => <div key={p._id}>{p.title}</div>)}
+          sortedProducts.map((p) => <Product key={p._id} product={p} />)}
       </div>
       <div className={styles.hhTitle}>
         <HTag tag="h2">Вакансии - {page.category}</HTag>

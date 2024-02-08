@@ -26,8 +26,10 @@ a {
   --red: #FC836D;
   --green: #1DC37E;
   --green-light: #C8F8E4;
+  --gray: #A4A4A4;
   --gray-light: #EBEBEB;
   --gray-dark: #787D85;
+  --font-family: "Noto Sans";
 }
 
 @media (prefers-color-scheme: dark) {

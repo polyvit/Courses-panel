@@ -1,9 +1,10 @@
 import { GetStaticProps } from "next";
-import { HTag, PTag, Rating, Tag } from "../components";
+import { HTag, Input, PTag, Rating, Tag, Textarea } from "../components";
 import { Button } from "../components";
 import { withLayout } from "../layout/Layout";
 import axios from "axios";
 import { MenuItem } from "../types/menu.types";
+import { Search } from "../components";
 
 function Home({ menu, firstCategory }: HomeProps): JSX.Element {
   return (
@@ -22,6 +23,9 @@ function Home({ menu, firstCategory }: HomeProps): JSX.Element {
         10 000
       </Tag>
       <Rating rating={1} setRating={() => {}} isEditable />
+      <Input />
+      <Textarea />
+      <Search />
     </>
   );
 }
