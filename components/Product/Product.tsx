@@ -7,12 +7,18 @@ import { Button } from "../Button/Button";
 import { changeWordFormation, priceRu } from "../../helpers/helpers";
 import { Hr } from "../Hr/Hr";
 import Image from "next/image";
+import cn from "classnames";
+import { useState } from "react";
+import { Review } from "../Review/Review";
+import { ReviewForm } from "../ReviewForm/ReviewForm";
 
 export const Product = ({
   product,
   className,
   ...props
 }: ProductProps): JSX.Element => {
+  const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
+
   return (
     <div {...props}>
       <Card className={styles.product}>
@@ -82,12 +88,28 @@ export const Product = ({
           <Button appearance="primary">Узнать подробнее</Button>
           <Button
             appearance="ghost"
-            arrow={"right"}
+            arrow={isReviewOpened ? "down" : "right"}
             className={styles.reviewButton}
+            onClick={() => setIsReviewOpened(!isReviewOpened)}
           >
             Читать отзывы
           </Button>
         </div>
+      </Card>
+      <Card
+        color="blue"
+        className={cn(styles.reviews, {
+          [styles.opened]: isReviewOpened,
+          [styles.closed]: !isReviewOpened,
+        })}
+      >
+        {product.reviews.map((r) => (
+          <div key={r._id}>
+            <Review review={r} />
+            <Hr />
+          </div>
+        ))}
+        <ReviewForm productId={product._id} />
       </Card>
     </div>
   );
