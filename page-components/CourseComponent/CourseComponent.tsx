@@ -12,7 +12,7 @@ import styles from "./CourseComponent.module.css";
 import { Card } from "../../components";
 import { TopLevelCategory } from "../../types/page.types";
 import { SortEnum } from "../../components/Sort/Sort.types";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { sortReducer } from "./sort.reducer";
 
 export const CourseComponent = ({
@@ -31,6 +31,10 @@ export const CourseComponent = ({
   const setSort = (sort: SortEnum) => {
     dispatchSort({ type: sort });
   };
+
+  useEffect(() => {
+    dispatchSort({ type: "reset", initialState: products });
+  }, [products]);
 
   return (
     <div className={styles.wrapper}>
