@@ -10,3 +10,7 @@ export interface IReviewForm {
     description: string;
     rating: number;
 }
+
+export interface IReviewResponse {
+    message: string;
+}

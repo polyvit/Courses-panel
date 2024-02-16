@@ -5,6 +5,7 @@ import axios from "axios";
 import { firstLevelMenu } from "../../helpers/helpers";
 import { ParsedUrlQuery } from "querystring";
 import { TopLevelCategory } from "../../types/page.types";
+import { API } from "../../helpers/api";
 
 function Type({ firstCategory }): JSX.Element {
   return <>{firstCategory}</>;
@@ -31,10 +32,9 @@ export const getStaticProps: GetStaticProps<TypeProps> = async ({
     return { notFound: true };
   }
 
-  const { data: menu } = await axios.post<MenuItem[]>(
-    process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find",
-    { firstCategory: firstCategoryItem.id }
-  );
+  const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
+    firstCategory: firstCategoryItem.id,
+  });
   return {
     props: { menu, firstCategory: firstCategoryItem.id },
   };
