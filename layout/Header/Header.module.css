@@ -1,0 +1,24 @@
+.header {
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  background: #F5F6F8;
+  overflow-y: scroll;
+  padding: 20px 10px;
+}
+
+.menuCloseIcon {
+  position: fixed;
+  z-index: 110;
+  top: 15px;
+  right: 15px;
+}
