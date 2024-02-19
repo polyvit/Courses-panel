@@ -46,19 +46,19 @@
   line-height: 19px;
 }
 
-.thirdLevelBlock {
+/* .thirdLevelBlock {
   display: none;
-}
+} */
 
-.thirdLevelBlock:last-child {
+/* .thirdLevelBlock:last-child {
   margin-bottom: 20px;
-}
+} */
 
 .thirdLevelActive,
 .thirdLevel:hover {
   color: var(--primary);
 }
 
-.thirdLevelOpened {
+/* .thirdLevelOpened {
   display: block;
-}
+} */

@@ -5,7 +5,6 @@ import UserIcon from "./user.svg";
 import { format } from "date-fns";
 import { ru } from "date-fns/locale";
 import { Rating } from "../Rating/Rating";
-import { PTag } from "../PTag/PTag";
 
 export const Review = ({
   review,
