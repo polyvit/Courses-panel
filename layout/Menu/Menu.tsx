@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, KeyboardEvent } from "react";
 import styles from "./Menu.module.css";
 import { AppContext } from "../../context/app.context";
 import { FirstLevelMenuItem, Page } from "../../types/menu.types";
@@ -45,6 +45,12 @@ export const Menu = (): JSX.Element => {
     });
     setMenu && setMenu(newMenu);
   };
+  const toggleThirdLevelKey = (e: KeyboardEvent, secondCategory: string) => {
+    if (e.code == "Space" || e.code == "Enter") {
+      e.preventDefault();
+      toggleThirdLevel(secondCategory);
+    }
+  };
 
   const buildFirstLevel = () => {
     return (
@@ -78,6 +84,10 @@ export const Menu = (): JSX.Element => {
             <div key={m._id.secondCategory}>
               <div
                 className={styles.secondLevel}
+                tabIndex={0}
+                onKeyDown={(e: KeyboardEvent) =>
+                  toggleThirdLevelKey(e, m._id.secondCategory)
+                }
                 onClick={() => toggleThirdLevel(m._id.secondCategory)}
               >
                 {m._id.secondCategory}
@@ -89,7 +99,7 @@ export const Menu = (): JSX.Element => {
                 animate={m.isOpened ? "visible" : "hidden"}
                 className={cn(styles.thirdLevelBlock)}
               >
-                {buildThirdLevel(m.pages, menuItem.route)}
+                {buildThirdLevel(m.pages, menuItem.route, m.isOpened ?? false)}
               </motion.div>
             </div>
           );
@@ -98,13 +108,14 @@ export const Menu = (): JSX.Element => {
     );
   };
 
-  const buildThirdLevel = (pages: Page[], route: string) => {
+  const buildThirdLevel = (pages: Page[], route: string, isOpened: boolean) => {
     return (
       <div>
         {pages.map((page) => (
           <motion.div key={page.alias} variants={variantsChildren}>
             <Link href={`/${route}/${page.alias}`}>
               <a
+                tabIndex={isOpened ? 0 : -1}
                 className={cn(styles.thirdLevel, {
                   [styles.thirdLevelActive]:
                     `/${route}/${page.alias}` == router.asPath,
