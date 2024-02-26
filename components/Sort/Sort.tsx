@@ -1,3 +1,4 @@
+import { KeyboardEvent } from "react";
 import { SortEnum, SortProps } from "./Sort.types";
 import SortIcon from "./sort.svg";
 import styles from "./Sort.module.css";
@@ -9,10 +10,19 @@ export const Sort = ({
   className,
   ...props
 }: SortProps): JSX.Element => {
+  const keyDownHandler = (e: KeyboardEvent, sorting: SortEnum) => {
+    if (e.code == "Space" || e.code == "Enter") {
+      e.preventDefault();
+      setSort(sorting);
+    }
+  };
+
   return (
     <div className={cn(styles.sort, className)} {...props}>
       <span
         onClick={() => setSort(SortEnum.Rating)}
+        tabIndex={0}
+        onKeyDown={(e: KeyboardEvent) => keyDownHandler(e, SortEnum.Rating)}
         className={cn({
           [styles.active]: sort == SortEnum.Rating,
         })}
@@ -22,6 +32,8 @@ export const Sort = ({
       </span>
       <span
         onClick={() => setSort(SortEnum.Price)}
+        tabIndex={0}
+        onKeyDown={(e: KeyboardEvent) => keyDownHandler(e, SortEnum.Price)}
         className={cn({
           [styles.active]: sort == SortEnum.Price,
         })}
