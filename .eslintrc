@@ -5,16 +5,16 @@
 		"@typescript-eslint"
 	],
 	"rules": {
-		"semi": "off"
-		// "@typescript-eslint/semi": [
-		// 	"warn"
-		// ],
-		// "@typescript-eslint/no-empty-interface": [
-		// 	"error",
-		// 	{
-		// 		"allowSingleExtends": true
-		// 	}
-		// ]
+		"semi": "off",
+		"@typescript-eslint/semi": [
+			"warn"
+		],
+		"@typescript-eslint/no-empty-interface": [
+			"error",
+			{
+				"allowSingleExtends": true
+			}
+		]
 	},
 	"extends": [
 		"eslint:recommended",
