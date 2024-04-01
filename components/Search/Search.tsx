@@ -4,7 +4,7 @@ import styles from "./Search.module.css";
 import { Input } from "../Input/Input";
 import { Button } from "../Button/Button";
 import GlassIcon from "./glass.svg";
-import { useState } from "react";
+import { KeyboardEvent, useState } from "react";
 import { useRouter } from "next/router";
 
 export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
@@ -15,7 +15,7 @@ export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
     router.push({ pathname: "/search", query: { q: search } });
   };
 
-  const handleKeyDown = (e: KeyboardEvent) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key == "Enter") {
       goToSearchPage();
     }
