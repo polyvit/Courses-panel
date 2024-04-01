@@ -36,10 +36,12 @@ export const CourseComponent = ({
     dispatchSort({ type: "reset", initialState: products });
   }, [products]);
 
+  if (!page) return <></>;
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>
-        <HTag tag="h1">{page.title}</HTag>
+        <HTag tag="h1">{page ? page.title : ""}</HTag>
         {products && (
           <Tag color="gray" size="m">
             {products.length}
@@ -52,7 +54,7 @@ export const CourseComponent = ({
           sortedProducts.map((p) => <Product layout key={p._id} product={p} />)}
       </div>
       <div className={styles.hhTitle}>
-        <HTag tag="h2">Вакансии - {page.category}</HTag>
+        <HTag tag="h2">Вакансии - {page ? page.category : ""}</HTag>
         <Tag color="red" size="m">
           hh.ru
         </Tag>
@@ -63,7 +65,7 @@ export const CourseComponent = ({
       {page.advantages && page.advantages.length > 0 && (
         <>
           <HTag tag="h2">Преимущества</HTag>
-          <Advantage advantages={page.advantages} />
+          <Advantage advantages={page ? page.advantages : ""} />
         </>
       )}
       {page.seoText && (
