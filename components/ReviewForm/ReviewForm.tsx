@@ -14,7 +14,6 @@ import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import axios from "axios";
 import { API } from "../../helpers/api";
 import { useState } from "react";
-import { database } from "faker/locale/de";
 
 export const ReviewForm = ({
   productId,
@@ -48,7 +47,9 @@ export const ReviewForm = ({
       } else {
         setError("Произошла ошибка");
       }
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (

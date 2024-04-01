@@ -1,7 +1,5 @@
-import { AdvantageProps } from "./Advantages.types";
 import CheckIcon from "./check.svg";
 import styles from "./Advantages.module.css";
-import { HTag } from "../HTag/Htag";
 import { PTag } from "../PTag/PTag";
 import { TopPageAdvantage } from "../../types/page.types";
 
