@@ -4,7 +4,7 @@
 
 _Completed in Feb, 2024_
 
-[See demo]()
+[See demo](https://polyvit-courses-panel.netlify.app)
 
 Учебный проект-сайт подбора образовательных продуктов, осуществлена разработка раздела курсов. Есть функционал чтения и добавления отзывов. Верстка выполнена с использованием GridCSS, имеется адаптивная версия. Проект выполнен с использованием Next - Pages Router. Выполнена простая анимация с использованием Framer Motion.
 
@@ -19,3 +19,4 @@ Technologies:
 1. Framer Motion
 1. eslint
 1. stylelint
+1. Date-fns
